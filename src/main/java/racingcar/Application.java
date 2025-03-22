@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.regex.Pattern;
 
+
 public class Application {
+
     public static void main(String[] args) {
         System.out.println("경주할 자동차를 입력 하세요 : ");
         String member_input = Console.readLine();
@@ -23,6 +25,9 @@ public class Application {
 
         String[] player = member_input.split(",");
         int try_count = Integer.parseInt(try_input);
+        String[] player_location = new String[player.length];
+        setPlayer(player, player_location);
+
 
 
     }
@@ -38,4 +43,22 @@ public class Application {
             throw new IllegalArgumentException("유효하지 않은 이름입니다.");
         }
     }
+
+    private static void setPlayer(String[] player, String[] location){
+        for(int i = 0 ; i < player.length ; i++){
+            location[i] = "";
+        }
+    }
+
+    private static void printLocation(String[] player, String[] location){
+
+        for(int i = 0 ; i < player.length ; i++){
+            System.out.print(player[i] + " : ");
+            System.out.println(location[i]);
+        }
+
+    }
+
+
+
 }
