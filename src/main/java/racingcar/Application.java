@@ -28,6 +28,11 @@ public class Application {
         String[] player_location = new String[player.length];
         setPlayer(player, player_location);
 
+        for(int i = 0 ; i < try_count; i++){
+            allPlayerMove(player, player_location);
+            printLocation(player, player_location);
+            System.out.println();
+        }
 
 
 
