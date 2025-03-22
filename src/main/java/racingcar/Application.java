@@ -30,6 +30,20 @@ public class Application {
 
 
 
+
+    }
+
+    private static void allPlayerMove(String[] player, String[] location) {
+
+        int rnd_int;
+
+        for(int i = 0; i < player.length ; i++){
+            rnd_int = Randoms.pickNumberInRange(0, 9);
+            if(rnd_int >= 4) {
+                playerMove(location, i);
+            }
+        }
+
     }
 
     private static void vaildTry(String input, String pattern) {
@@ -60,5 +74,9 @@ public class Application {
     }
 
 
+
+    private static void playerMove(String[] location, int index){
+        location[index] = location[index] + "-";
+    }
 
 }
