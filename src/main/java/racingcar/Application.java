@@ -17,10 +17,8 @@ public class Application {
 
         member_input = member_input.replace(" ", "");
 
-        String regex_player = "^([a-zA-Z]{1,5})(,[a-zA-Z]{1,5}){1,}$";
         String regex_try = "^[1-9][0-9]*$";
 
-        vaildPlayer(member_input, regex_player);
         vaildTry(try_input, regex_try);
 
         String[] player = member_input.split(",");
@@ -85,11 +83,7 @@ public class Application {
         }
     }
 
-    private static void vaildPlayer(String input, String pattern) {
-        if(!Pattern.matches(pattern, input)){
-            throw new IllegalArgumentException("유효하지 않은 이름입니다.");
-        }
-    }
+
 
     private static void setPlayer(String[] player, String[] location){
         for(int i = 0 ; i < player.length ; i++){
