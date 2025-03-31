@@ -17,6 +17,19 @@ public class RacingEvent {
         addAllCar(cars);
     }
 
+    public void addCarWithString(String input){
+
+        System.out.println("경주할 자동차를 입력 하세요 : ");
+        String member_input = Console.readLine();
+        member_input = member_input.replace(" ", "");
+        String[] player = member_input.split(",");
+
+        for(String car : player){
+            addCar(new Car(car));
+        }
+
+    }
+
     public void setLap(){
         System.out.println("시도 횟수를 입력하세요 : ");
         //정규식 계산을 위해 string 타입으로 입력받기

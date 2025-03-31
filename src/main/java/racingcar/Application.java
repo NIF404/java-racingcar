@@ -8,12 +8,7 @@ import java.util.regex.Pattern;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("경주할 자동차를 입력 하세요 : ");
-        String member_input = Console.readLine();
-        member_input = member_input.replace(" ", "");
 
-
-        String[] player = member_input.split(",");
         String[] player_location = new String[player.length];
         setPlayer(player, player_location);
 
