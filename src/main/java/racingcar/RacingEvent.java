@@ -9,12 +9,24 @@ public class RacingEvent {
 
     private final List<Car> players = new ArrayList<>();
     private int lap = 0;
+    private String[] track;
 
     public RacingEvent(){
     }
 
     public RacingEvent(Car[] cars){
         addAllCar(cars);
+    }
+
+    private void setTrack() {
+        track = new String[players.size()];
+    }
+
+    public void printTrack(){
+        for(int i = 0 ; i < track.length ; i++){
+            System.out.print(players.get(i) + " : ");
+            System.out.println(track[i]);
+        }
     }
 
     public void addCarWithString(String input){

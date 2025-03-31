@@ -65,21 +65,6 @@ public class Application {
 
 
 
-    private static void setPlayer(String[] player, String[] location){
-        for(int i = 0 ; i < player.length ; i++){
-            location[i] = "";
-        }
-    }
-
-    private static void printLocation(String[] player, String[] location){
-
-        for(int i = 0 ; i < player.length ; i++){
-            System.out.print(player[i] + " : ");
-            System.out.println(location[i]);
-        }
-
-    }
-
 
 
     private static void playerMove(String[] location, int index){
