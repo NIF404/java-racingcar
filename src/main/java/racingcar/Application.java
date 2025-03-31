@@ -26,49 +26,12 @@ public class Application {
 
     }
 
-    private static String selectWiner(String[] player, String[] location) {
-        StringBuilder winner;
-        // 0번: 인덱스, 1번 : 길이
-        int[] max = new int[2];
-        max[1] = -1;
-        for(int i = 0 ; i < player.length ; i++){
-            if(location[i].length() > max[1]){
-                max[0] = i;
-                max[1] = location[i].length();
-            }
-        }
-
-        winner = new StringBuilder(player[max[0]]);
-
-        for(int i = max[0] + 1 ; i < player.length ; i++){
-            if(location[i].length() == max[1]){
-                winner.append(", ").append(player[i]);
-            }
-        }
-
-        return winner.toString();
-
-    }
-
-    private static void allPlayerMove(String[] player, String[] location) {
-
-        int rnd_int;
-
-        for(int i = 0; i < player.length ; i++){
-            rnd_int = Randoms.pickNumberInRange(0, 9);
-            if(rnd_int >= 4) {
-                playerMove(location, i);
-            }
-        }
-
-    }
 
 
 
 
 
-    private static void playerMove(String[] location, int index){
-        location[index] = location[index] + "-";
-    }
+
+
 
 }

@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +19,43 @@ public class RacingEvent {
         addAllCar(cars);
     }
 
+    private String selectWinner(){
+        StringBuilder winner = new StringBuilder();
+        // 0번: 인덱스, 1번 : 길이
+        int[] max = new int[2];
+        max[1] = -1;
+        for(int i = 0 ; i < players.size() ; i++){
+            if(track[i].length() > max[1]){
+                max[0] = i;
+                max[1] = track[i].length();
+            }
+        }
+
+        for(int i = max[0] + 1 ; i < players.size() ; i++){
+            if(track[i].length() == max[1]){
+                winner.append(", ").append(players.get(i))g;
+            }
+        }
+
+        return winner.toString();
+    }
+
+    private void moveCar(){
+        int rnd_int;
+
+        for(int i = 0; i < players.size() ; i++){
+            rnd_int = Randoms.pickNumberInRange(0, 9);
+            if(rnd_int >= 4) {
+                track[i] = track[i] + "-";
+            }
+        }
+    }
+
     private void setTrack() {
         track = new String[players.size()];
     }
 
-    public void printTrack(){
+    private void printTrack(){
         for(int i = 0 ; i < track.length ; i++){
             System.out.print(players.get(i) + " : ");
             System.out.println(track[i]);
