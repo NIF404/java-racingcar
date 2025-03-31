@@ -29,8 +29,8 @@ public class Car {
     }
 
     private static void validName(String input) {
-        String regex_name = "^([a-zA-Z]{1,5})(,[a-zA-Z]{1,5})+$";
-
+        String regex_name = "^([a-zA-Z]{1,5})$";
+        input = input.replace(" ", "");
         if(!Pattern.matches(regex_name, input)){
             throw new IllegalArgumentException("유효하지 않은 이름입니다.");
         }

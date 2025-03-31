@@ -19,21 +19,37 @@ public class RacingEvent {
         addAllCar(cars);
     }
 
+    public void racing(){
+        setTrack();
+        setLap();
+
+        for(int i = 0 ; i < lap; i++){
+            moveCar();
+            printTrack();
+            System.out.println();
+        }
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(selectWinner());
+    }
+
     private String selectWinner(){
         StringBuilder winner = new StringBuilder();
         // 0번: 인덱스, 1번 : 길이
         int[] max = new int[2];
         max[1] = -1;
-        for(int i = 0 ; i < players.size() ; i++){
+        for(int i = 0 ; i < track.length ; i++){
             if(track[i].length() > max[1]){
                 max[0] = i;
                 max[1] = track[i].length();
             }
         }
 
+        winner.append(players.get(max[0]).name);
+
         for(int i = max[0] + 1 ; i < players.size() ; i++){
             if(track[i].length() == max[1]){
-                winner.append(", ").append(players.get(i))g;
+                winner.append(", ").append(players.get(i).name);
             }
         }
 
@@ -53,18 +69,22 @@ public class RacingEvent {
 
     private void setTrack() {
         track = new String[players.size()];
+
+        for (int i = 0; i < track.length; i++) {
+            track[i] = "";
+        }
     }
 
     private void printTrack(){
         for(int i = 0 ; i < track.length ; i++){
-            System.out.print(players.get(i) + " : ");
+            System.out.print(players.get(i).name + " : ");
             System.out.println(track[i]);
         }
     }
 
-    public void addCarWithString(String input){
+    public void addCarWithString(){
 
-        System.out.println("경주할 자동차를 입력 하세요 : ");
+        System.out.println("경주할 자동차를 입력 하세요 ( , 로 구분 ) : ");
         String member_input = Console.readLine();
         member_input = member_input.replace(" ", "");
         String[] player = member_input.split(",");
@@ -75,7 +95,7 @@ public class RacingEvent {
 
     }
 
-    public void setLap(){
+    private void setLap(){
         System.out.println("시도 횟수를 입력하세요 : ");
         //정규식 계산을 위해 string 타입으로 입력받기
         String lap_input = Console.readLine();
