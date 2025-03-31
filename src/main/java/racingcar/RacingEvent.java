@@ -1,11 +1,14 @@
 package racingcar;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RacingEvent {
 
     private final List<Car> players = new ArrayList<>();
-
+    private int lap = 0;
 
     public RacingEvent(){
     }
@@ -14,7 +17,20 @@ public class RacingEvent {
         addAllCar(cars);
     }
 
+    public void setLap(){
+        System.out.println("시도 횟수를 입력하세요 : ");
+        //정규식 계산을 위해 string 타입으로 입력받기
+        String lap_input = Console.readLine();
+        validLap(lap_input);
+        lap = Integer.parseInt(lap_input);
+    }
 
+    private void validLap(String input) {
+        String regex_lap = "^[1-9][0-9]*$";
+        if(!Pattern.matches(regex_lap, input)){
+            throw new IllegalArgumentException("유효하지 않은 시도횟수 입니다.");
+        }
+    }
 
     public void addCar(Car car){
         if(players.contains(car)){
